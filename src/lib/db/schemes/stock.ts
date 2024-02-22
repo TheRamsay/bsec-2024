@@ -1,5 +1,5 @@
 import { timestamp, text, pgTable, serial, integer } from 'drizzle-orm/pg-core';
-import { sql, type InferSelectModel, relations } from 'drizzle-orm';
+import { sql, type InferSelectModel, relations, type InferInsertModel } from 'drizzle-orm';
 import { securities } from './security';
 import { users } from './user';
 
@@ -30,3 +30,4 @@ export const stockRelation = relations(stocks, ({ one }) => ({
 }));
 
 export type Stock = InferSelectModel<typeof stocks>;
+export type InsertStock = InferInsertModel<typeof stocks>;
