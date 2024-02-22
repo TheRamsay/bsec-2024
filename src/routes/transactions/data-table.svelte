@@ -90,8 +90,7 @@
 								<Subscribe attrs={cell.attrs()} let:attrs>
 									<Table.Cell {...attrs}>
 										{#if cell.id === 'amount'}
-											<!-- <div class={+cell.value > 0 ? 'text-green-400' : 'text-rose-600'}> -->
-											<div class="text-pink-600">
+											<div class={+cell.value > 0 ? 'text-green-400 font-bold' : 'text-rose-600 font-bold'}>
 												<Render of={cell.render()} />
 											</div>
 										{:else}
