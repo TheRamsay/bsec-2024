@@ -1,8 +1,8 @@
 import { drizzle_db, schema_db } from "$lib/db/connection.server";
-import { transactions, type Transaction } from "$lib/db/schemes/transaction";
-import { eq } from "drizzle-orm";
+import { transactions, type Transaction, type InsertTransaction } from "$lib/db/schemes/transaction";
+import { eq, type InferInsertModel } from "drizzle-orm";
 
-export const getTransactions = async (
+export const getTransactionsByUser = async (
     userId: number
 ): Promise<Array<Transaction>> => {
 	const data = await schema_db.query.transactions.findMany({
@@ -11,3 +11,11 @@ export const getTransactions = async (
 
 	return data; 
 };
+
+
+export const createTransaction = async(
+    transaction: InsertTransaction
+    ):  Promise<number> => {
+    const response = await schema_db.insert(transactions).values(transaction).returning();
+    return response[0].id;
+  }
