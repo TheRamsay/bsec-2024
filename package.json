@@ -20,6 +20,7 @@
 		"@typescript-eslint/eslint-plugin": "^7.0.0",
 		"@typescript-eslint/parser": "^7.0.0",
 		"autoprefixer": "^10.4.17",
+		"drizzle-kit": "^0.20.14",
 		"eslint": "^8.56.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.35.1",
@@ -40,6 +41,8 @@
 		"clsx": "^2.1.0",
 		"lucide-svelte": "^0.336.0",
 		"tailwind-merge": "^2.2.1",
-		"tailwind-variants": "^0.2.0"
+		"tailwind-variants": "^0.2.0",
+		"drizzle-orm": "^0.29.4",
+		"postgres": "^3.4.3"
 	}
 }

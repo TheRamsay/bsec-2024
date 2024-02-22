@@ -1,0 +1,27 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1708610000462,
+      "tag": "0000_loose_vindicator",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1708616549591,
+      "tag": "0001_steady_silk_fever",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1708617088910,
+      "tag": "0002_closed_bullseye",
+      "breakpoints": true
+    }
+  ]
+}
