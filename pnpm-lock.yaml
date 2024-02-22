@@ -55,6 +55,9 @@ devDependencies:
   drizzle-kit:
     specifier: ^0.20.14
     version: 0.20.14
+  echarts:
+    specifier: ^5.5.0
+    version: 5.5.0
   eslint:
     specifier: ^8.56.0
     version: 8.56.0
@@ -79,6 +82,9 @@ devDependencies:
   svelte-check:
     specifier: ^3.6.0
     version: 3.6.4(postcss@8.4.35)(svelte@4.2.11)
+  svelte-echarts:
+    specifier: ^0.1.1
+    version: 0.1.1(echarts@5.5.0)(svelte@4.2.11)
   svelte-headless-table:
     specifier: ^0.18.2
     version: 0.18.2(svelte@4.2.11)
@@ -1531,6 +1537,13 @@ packages:
 
   /eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
+
+  /echarts@5.5.0:
+    resolution: {integrity: sha512-rNYnNCzqDAPCr4m/fqyUFv7fD9qIsd50S6GDFgO1DxZhncCsNsG7IfUlAlvZe5oSEQxtsjnHiUuppzccry93Xw==}
+    dependencies:
+      tslib: 2.3.0
+      zrender: 5.5.0
+    dev: true
 
   /electron-to-chromium@1.4.679:
     resolution: {integrity: sha512-NhQMsz5k0d6m9z3qAxnsOR/ebal4NAGsrNVRwcDo4Kc/zQ7KdsTKZUxZoygHcVRb0QDW3waEDIcE3isZ79RP6g==}
@@ -3012,6 +3025,16 @@ packages:
       - sugarss
     dev: true
 
+  /svelte-echarts@0.1.1(echarts@5.5.0)(svelte@4.2.11):
+    resolution: {integrity: sha512-kLnTPz6gmRl47Oe/Vjh6sIRBYRUUmzl8uvrdMg9wFXe1ur6L/xBo3c7e5lMBQarPRteC24+XT335P/htNyihHA==}
+    peerDependencies:
+      echarts: ^5.4.3
+      svelte: ^4.0.0
+    dependencies:
+      echarts: 5.5.0
+      svelte: 4.2.11
+    dev: true
+
   /svelte-eslint-parser@0.33.1(svelte@4.2.11):
     resolution: {integrity: sha512-vo7xPGTlKBGdLH8T5L64FipvTrqv3OQRx9d2z5X05KKZDlF4rQk8KViZO4flKERY+5BiVdOh7zZ7JGJWo5P0uA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -3243,6 +3266,10 @@ packages:
   /ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
 
+  /tslib@2.3.0:
+    resolution: {integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==}
+    dev: true
+
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
 
@@ -3442,4 +3469,10 @@ packages:
 
   /zod@3.22.4:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
+    dev: true
+
+  /zrender@5.5.0:
+    resolution: {integrity: sha512-O3MilSi/9mwoovx77m6ROZM7sXShR/O/JIanvzTwjN3FORfLSr81PsUGd7jlaYOeds9d8tw82oP44+3YucVo+w==}
+    dependencies:
+      tslib: 2.3.0
     dev: true
