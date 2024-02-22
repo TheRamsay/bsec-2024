@@ -20,6 +20,9 @@ dependencies:
   lucide-svelte:
     specifier: ^0.336.0
     version: 0.336.0(svelte@4.2.11)
+  mode-watcher:
+    specifier: ^0.2.1
+    version: 0.2.1(svelte@4.2.11)
   postgres:
     specifier: ^3.4.3
     version: 3.4.3
@@ -2524,6 +2527,14 @@ packages:
       pkg-types: 1.0.3
       ufo: 1.4.0
     dev: true
+
+  /mode-watcher@0.2.1(svelte@4.2.11):
+    resolution: {integrity: sha512-HLmJgG5kmJCFR/+rcG2te54HjIxqk7BTAsFnsygZR5hcOYlhLEJQ0V8rh1axv2JQIbOAZs1yPlUBSpVATRFtUw==}
+    peerDependencies:
+      svelte: ^4.0.0
+    dependencies:
+      svelte: 4.2.11
+    dev: false
 
   /mri@1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
