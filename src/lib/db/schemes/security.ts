@@ -1,11 +1,4 @@
-import {
-	timestamp,
-	varchar,
-	pgTable,
-	serial,
-	decimal,
-	doublePrecision
-} from 'drizzle-orm/pg-core';
+import { timestamp, varchar, pgTable, serial, decimal, doublePrecision } from 'drizzle-orm/pg-core';
 import { sql, type InferSelectModel, relations, type InferInsertModel } from 'drizzle-orm';
 
 export const securities = pgTable('securities', {
@@ -19,6 +12,7 @@ export const securities = pgTable('securities', {
 	positiveCase: doublePrecision('positive_case').notNull(),
 	negativeCase: doublePrecision('negative_case').notNull(),
 	neutralCase: doublePrecision('neutral_case').notNull(),
+	logo: varchar('logo'),
 	createdAt: timestamp('created_at')
 		.notNull()
 		.default(sql`now()`)
