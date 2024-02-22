@@ -23,10 +23,10 @@ export const stockRelation = relations(stocks, ({ one }) => ({
 		references: [securities.id]
 	}),
 
-	added_by: one(users, {
+	user: one(users, {
 		fields: [stocks.userId],
 		references: [users.id]
 	})
 }));
 
-export type Stocks = InferSelectModel<typeof stocks>;
+export type Stock = InferSelectModel<typeof stocks>;
