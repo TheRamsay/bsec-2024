@@ -6,7 +6,7 @@ import {
 	decimal,
 	doublePrecision
 } from 'drizzle-orm/pg-core';
-import { sql, type InferSelectModel, relations } from 'drizzle-orm';
+import { sql, type InferSelectModel, relations, type InferInsertModel } from 'drizzle-orm';
 
 export const securities = pgTable('securities', {
 	id: serial('id').primaryKey(),
@@ -25,3 +25,4 @@ export const securities = pgTable('securities', {
 });
 
 export type Security = InferSelectModel<typeof securities>;
+export type InsertSecurity = InferInsertModel<typeof securities>;
