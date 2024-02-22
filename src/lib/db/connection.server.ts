@@ -17,4 +17,4 @@ export const schema_db = drizzle(client, {
 	}
 });
 
-await migrateDb();
+// await migrateDb();
