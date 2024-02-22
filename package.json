@@ -42,6 +42,7 @@
 		"clsx": "^2.1.0",
 		"drizzle-orm": "^0.29.4",
 		"lucide-svelte": "^0.336.0",
+		"mode-watcher": "^0.2.1",
 		"postgres": "^3.4.3",
 		"tailwind-merge": "^2.2.1",
 		"tailwind-variants": "^0.2.0"
