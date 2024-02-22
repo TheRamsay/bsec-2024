@@ -9,22 +9,20 @@
 
 	const data = [
 		{
-			name: 'AMZN',
-			price: 3456.32,
-			quantity: 2,
-			image: 'https://www.investcroc.com/logos/AMZN.webp'
+			description: 'Rent',
+			amount: '-10000'
 		},
 		{
-			name: 'AAPL',
-			price: 123.32,
-			quantity: 5,
-			image: 'https://www.investcroc.com/logos/AAPL.webp'
+			description: 'Salary',
+			amount: '20000'
 		},
 		{
-			name: 'GOOGL',
-			price: 2345.32,
-			quantity: 1,
-			image: 'https://www.investcroc.com/logos/GOOGL.webp'
+			description: 'Groceries',
+			amount: '-5000'
+		},
+		{
+			description: 'Sugar daddy allowance 💸',
+			amount: '15000'
 		}
 	];
 
@@ -38,36 +36,18 @@
 
 	const columns = table.createColumns([
 		table.column({
-			accessor: 'name',
-			header: 'name'
+			accessor: 'description',
+			header: 'description'
 		}),
 		table.column({
-			accessor: 'image',
-			header: 'image',
+			accessor: 'amount',
+			header: 'amount',
 			plugins: {
 				filter: {
 					exclude: true
 				}
-			}
-		}),
-		table.column({
-			accessor: 'price',
-			header: 'price',
-			cell: (row) => `${row.value} 🍌`,
-			plugins: {
-				filter: {
-					exclude: true
-				}
-			}
-		}),
-		table.column({
-			accessor: 'quantity',
-			header: 'quantity',
-			plugins: {
-				filter: {
-					exclude: true
-				}
-			}
+			},
+			cell: (row) => `${row.value} 🍌`
 		})
 	]);
 
@@ -109,8 +89,11 @@
 							{#each row.cells as cell (cell.id)}
 								<Subscribe attrs={cell.attrs()} let:attrs>
 									<Table.Cell {...attrs}>
-										{#if cell.id === 'image'}
-											<img src={cell.value} alt={cell.value} class="w-10 h-10" />
+										{#if cell.id === 'amount'}
+											<!-- <div class={+cell.value > 0 ? 'text-green-400' : 'text-rose-600'}> -->
+											<div class="text-pink-600">
+												<Render of={cell.render()} />
+											</div>
 										{:else}
 											<Render of={cell.render()} />
 										{/if}

@@ -16,10 +16,9 @@
 		</a>
 		<span class="ml-2 text-lg font-bold">Vrrrr 🤑</span>
 		<nav class="ml-auto flex gap-4 sm:gap-6">
-			<a class="text-md font-medium hover:underline underline-offset-4" href="#"> About </a>
-			<a class="text-md font-medium hover:underline underline-offset-4" href="#"> Services </a>
-			<a class="text-md font-medium hover:underline underline-offset-4" href="#"> Portfolio </a>
-			<a class="text-md font-medium hover:underline underline-offset-4" href="#"> Contact </a>
+			<a class="text-md font-medium hover:underline underline-offset-4" href="/assets"> Assets </a>
+			<a class="text-md font-medium hover:underline underline-offset-4" href="/transactions"> Transcations </a>
+			<a class="text-md font-medium hover:underline underline-offset-4" href="/modeling"> Modeling </a>
 		</nav>
 	</header>
 </body>
