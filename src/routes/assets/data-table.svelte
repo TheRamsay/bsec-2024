@@ -32,22 +32,15 @@
 
 	const columns = table.createColumns([
 		table.column({
-			accessor: 'id',
-			header: 'id'
+			accessor: 'image',
+			header: 'image',
+			plugins: {
+				filter: {
+					exclude: true
+				},
+				sort: {}
+			}
 		}),
-		table.column({
-			accessor: 'name',
-			header: 'name'
-		}),
-		// table.column({
-		// 	accessor: 'image',
-		// 	header: 'image',
-		// 	plugins: {
-		// 		filter: {
-		// 			exclude: true
-		// 		}
-		// 	}
-		// }),
 		table.column({
 			accessor: 'name',
 			header: 'name'
@@ -81,7 +74,7 @@
 	const { filterValue } = pluginStates.filter;
 
 	const getRowSecurity = (row: any) => {
-		const security = stocks.find(
+		return stocks.find(
 			({ stock, security }) =>
 				security?.name === row?.cells.find((x: any) => x.id === 'name')?.value
 		);
