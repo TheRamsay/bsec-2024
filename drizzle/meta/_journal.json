@@ -36,6 +36,13 @@
       "when": 1708647474061,
       "tag": "0004_famous_nitro",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1708652909784,
+      "tag": "0005_mean_dazzler",
+      "breakpoints": true
     }
   ]
 }
