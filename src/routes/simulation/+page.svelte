@@ -16,6 +16,7 @@
 	import CustomCalendar from '../../components/CustomCalendar/CustomCalendar.svelte';
 	import CustomDatePicker from '../../components/CustomDatePicker/CustomDatePicker.svelte';
 	import { toast } from 'svelte-sonner';
+	import * as Select from '$lib/components/ui/select';
 
 	export let canvas: HTMLElement | undefined = undefined;
 
@@ -73,17 +74,27 @@
 		}
 
 		let generatedData = data.stocks.map(({ stock, security }) => {
-			// console.log(security.price);
-			// console.log(security.positive_case);
+			let acase = security.neutralCase;
+
+			if (selected.value === 'negative') {
+				acase = security.negativeCase;
+			} else if (selected.value === 'neutral') {
+				acase = security.neutralCase;
+			} else if (selected.value === 'positive') {
+				acase = security.positiveCase;
+			}
+
+
+			// console.log(acase);
+
 			return {
 				name: security.bic,
 				type: 'line',
 				showSymbol: false,
 				data: generateData(
 					security.price,
-					security.positiveCase,
-					stock.createdAt,
-					// fromValue?.toDate(),
+					acase,
+					fromValue?.toDate(),
 					toValue?.toDate()
 				)
 			};
@@ -120,23 +131,35 @@
 				}
 			],
 			legend: {
-				data: data.stocks.map(({stock, security}) => security.bic).concat('Total')
+				data: data.stocks.map(({ stock, security }) => security.bic).concat('Total')
 			}
 		};
 
-		console.log(options.xAxis.data);
+		// console.log(options.xAxis.data);
 
 		if (canvas) {
-			console.log('Created chart');
+			// console.log('Created chart');
 			echarts(canvas, options);
 		}
 	};
+
+	let selected = undefined;
 </script>
 
 <div>
 	<div class="m-10 flex flex-row h-full items-center">
 		<CustomDatePicker bind:value={fromValue} defaultText="Select from date" />
 		<CustomDatePicker bind:value={toValue} defaultText="Select to date" />
+		<Select.Root bind:selected>
+			<Select.Trigger class="w-[180px]">
+				<Select.Value placeholder="Model case" />
+			</Select.Trigger>
+			<Select.Content>
+				<Select.Item value="negative">negative</Select.Item>
+				<Select.Item value="neutral">neutral</Select.Item>
+				<Select.Item value="positive">positive</Select.Item>
+			</Select.Content>
+		</Select.Root>
 		<Button variant="outline" on:click={updateChart}>Submit</Button>
 	</div>
 	<div class="container" bind:this={canvas} />
