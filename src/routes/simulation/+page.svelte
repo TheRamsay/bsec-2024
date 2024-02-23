@@ -119,7 +119,7 @@
 				})
 			},
 			yAxis: {
-				name: 'Income'
+				name: 'Price'
 			},
 			series: [
 				...generatedData,
