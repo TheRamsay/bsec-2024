@@ -6,27 +6,19 @@
 	import { addPagination, addSortBy, addTableFilter } from 'svelte-headless-table/plugins';
 	import { Button } from '$lib/components/ui/button';
 	import { Input } from '$lib/components/ui/input';
+	import type { Security } from '$lib/db/schemes/security';
+	import type { Stock } from '$lib/db/schemes/stock';
 
-	const data = [
-		{
-			name: 'AMZN',
-			price: 3456.32,
-			quantity: 2,
-			image: 'https://www.investcroc.com/logos/AMZN.webp'
-		},
-		{
-			name: 'AAPL',
-			price: 123.32,
-			quantity: 5,
-			image: 'https://www.investcroc.com/logos/AAPL.webp'
-		},
-		{
-			name: 'GOOGL',
-			price: 2345.32,
-			quantity: 1,
-			image: 'https://www.investcroc.com/logos/GOOGL.webp'
-		}
-	];
+	export let stocks: Array<{ stock: Stock; security: Security }>;
+
+	let data = stocks.map((stock) => {
+		return {
+			name: stock.security.name,
+			quantity: stock.stock.amount,
+			price: stock.security.price,
+			image: stock.security.logo
+		};
+	});
 
 	const table = createTable(readable(data), {
 		page: addPagination(),
@@ -38,10 +30,6 @@
 
 	const columns = table.createColumns([
 		table.column({
-			accessor: 'name',
-			header: 'name'
-		}),
-		table.column({
 			accessor: 'image',
 			header: 'image',
 			plugins: {
@@ -50,6 +38,11 @@
 				}
 			}
 		}),
+		table.column({
+			accessor: 'name',
+			header: 'name'
+		}),
+
 		table.column({
 			accessor: 'price',
 			header: 'price',
@@ -82,7 +75,7 @@
 	<div class="flex items-center py-4">
 		<Input class="max-w-sm" placeholder="Filter name..." type="text" bind:value={$filterValue} />
 	</div>
-	<div class="rounded-md border">
+	<div class="border rounded-md">
 		<Table.Root {...$tableAttrs}>
 			<Table.Header>
 				{#each $headerRows as headerRow}
@@ -123,7 +116,7 @@
 			</Table.Body>
 		</Table.Root>
 	</div>
-	<div class="flex items-center justify-end space-x-4 py-4">
+	<div class="flex items-center justify-end py-4 space-x-4">
 		<Button
 			variant="outline"
 			size="sm"

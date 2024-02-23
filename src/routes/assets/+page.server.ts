@@ -1,9 +1,9 @@
-// import { getSecurities } from '$lib/api/securities';
+import { getStocksByUser } from '$lib/api/stocks';
 
-// export async function load() {
-// 	let securities = await getSecurities();
+export async function load() {
+	let stocks = await getStocksByUser(1);
 
-// 	return {
-// 		securities: securities
-// 	};
-// }
+	return {
+		stocks: stocks
+	};
+}

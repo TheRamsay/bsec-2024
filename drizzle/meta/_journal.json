@@ -43,6 +43,13 @@
       "when": 1708652909784,
       "tag": "0005_mean_dazzler",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1708659141286,
+      "tag": "0006_illegal_lester",
+      "breakpoints": true
     }
   ]
 }

@@ -12,7 +12,6 @@ export const securities = pgTable('securities', {
 	positiveCase: doublePrecision('positive_case').notNull(),
 	negativeCase: doublePrecision('negative_case').notNull(),
 	neutralCase: doublePrecision('neutral_case').notNull(),
-	logo: varchar('logo'),
 	createdAt: timestamp('created_at')
 		.notNull()
 		.default(sql`now()`)
