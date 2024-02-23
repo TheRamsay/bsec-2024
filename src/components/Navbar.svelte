@@ -10,31 +10,17 @@
 <body>
 	<header class="px-4 lg:px-6 h-14 flex items-center">
 		<a class="flex items-center justify-center" href="/">
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				width="2em"
-				height="2em"
-				viewBox="0 0 24 24"
-				{...$$props}
-				><path
-					fill="currentColor"
-					d="M2.7 17.625q-.3-.3-.288-.712t.288-.688l5.275-5.35Q8.55 10.3 9.4 10.3t1.425.575l2.575 2.6l5.2-5.15H17q-.425 0-.712-.288T16 7.326q0-.425.288-.712T17 6.325h4q.425 0 .713.288t.287.712v4q0 .425-.288.713t-.712.287q-.425 0-.712-.287T20 11.325v-1.6L14.825 14.9q-.575.575-1.425.575t-1.425-.575L9.4 12.325l-5.3 5.3q-.275.275-.7.275t-.7-.275"
-				/></svg
-			>
+			<img src="biggerIcon.png" alt="" width=60% height=60%>
 			<span class="sr-only">Acme Inc</span>
 		</a>
 		<span class="ml-2 text-lg font-bold">Vrrrr 🤑</span>
 		<nav class="ml-auto flex content-center gap-2 sm:gap-2">
-			<Button>
-				<a class="text-md font-medium" href="/assets"> Assets </a>
-			</Button>
-			<Button>
-				<a class="text-md font-medium" href="/transactions"> Transcations </a>
-			</Button>
-			<Button>
-				<a class="text-md font-medium" href="/modeling"> Modeling </a>
-			</Button>			
-			<Button on:click={toggleMode} variant="outline" size="icon">
+			<div class="pt-2 flex gap-4">
+				<a class="text-md font-medium hover:underline" href="/assets"> Assets </a>
+				<a class="text-md font-medium hover:underline" href="/transactions"> Transcations </a>
+				<a class="text-md font-medium hover:underline" href="/modeling"> Modeling </a>		
+			</div>
+				<Button on:click={toggleMode} variant="outline" size="icon">
 				<Sun
 				  class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
 				/>
