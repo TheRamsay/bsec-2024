@@ -4,6 +4,10 @@
 	import Moon from 'lucide-svelte/icons/moon';
 
 	import { toggleMode } from 'mode-watcher';
+	import Search from './Search.svelte';
+	import type { Security } from '$lib/db/schemes/security';
+
+	export let securities: Security[];
 </script>
 
 <body>
@@ -12,6 +16,9 @@
 			<img src="biggerIcon.png" alt="" width="60%" height="60%" />
 			<span class="sr-only">Acme Inc</span>
 		</a>
+		<div class="flex flex-row items-center justify-center w-full">
+			<Search {securities} />
+		</div>
 		<nav class="flex gap-4 ml-auto sm:gap-6">
 			<a class="font-medium text-md hover:underline underline-offset-4" href="/assets"> Assets </a>
 			<a class="font-medium text-md hover:underline underline-offset-4" href="/transactions">
