@@ -1,17 +1,21 @@
 import { schema_db } from "$lib/db/connection.server";
-import { securities } from "$lib/db/schemes/security";
+import { securities, type Security } from "$lib/db/schemes/security";
 import { stocks, type Stock, type InsertStock } from "$lib/db/schemes/stock";
 import { transactions } from "$lib/db/schemes/transaction";
-import { and, eq } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 
 export const getStocksByUser = async (
     userId: number
-): Promise<Array<Stock>> => {
+): Promise<Array<{ stock: Stock; security: Security }>> => {
     const data = await schema_db.query.stocks.findMany({
-        where: eq(stocks.userId, userId)
+        where: eq(stocks.userId, userId),
+        with: {
+            security: true
+        },
+        orderBy: desc(stocks.createdAt)
     });
 
-    return data;
+    return data.map((el) => ({ stock: el, security: el.security }));
 };
 
 export const getStocksBySecurity = async (
