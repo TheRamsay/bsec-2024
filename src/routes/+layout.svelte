@@ -7,8 +7,9 @@
 	export let data: PageData;
 </script>
 
-<main class="p-2">
-	<Navbar securities={data.securities} />
+<!-- <Toaster /> -->
+<main class="p-2 h-screen w-screen">
+	<Navbar />
 	<ModeWatcher />
 	<slot />
 </main>

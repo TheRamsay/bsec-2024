@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import BalanceCard from '../components/BalanceCard.svelte';
-	import AssetsList from '../components/AssetsList.svelte';
 	import { onMount } from 'svelte';
+	import AssetsList from '../components/AssetsList.svelte';
 
 	export let data: PageData;
 	let canvas: HTMLElement | undefined = undefined;
@@ -44,22 +44,13 @@
 });
 </script>
 
-<body>
-	<h1 class="text-3xl font-bold underline text-orange-400">DELAME AKCIE A TOCIME MATY</h1>
-	
-
-	<BalanceCard accountName={data.user.name} balance={data.user.balance.toString()} currency="🍌" />
-
-    <h2 class="font-bold text-2xl">Your assets</h2>
-    <AssetsList assets={data.assets} />
-
-	<div class="container" bind:this={canvas} />
-
-<style>
-	.container {
-		width: 1600;
-		height: 700px;
-	}
-</style>
-
+<body class="flex justify-between p-6">
+	<div class="flex-rows justify-between w-1/3">
+		<BalanceCard accountName={data.user.name} balance={data.user.balance.toString()} currency="🍌" />
+		<AssetsList assets={data.assets} />
+	</div>
+	<div class="flex-col justify-end w-1/2 h-screen">
+		<h2 class="flex justify-center font-bold text-2xl">Your assets</h2>
+		<div class="flex justify-center w-400 h-2/3" bind:this={canvas} />
+	</div>
 </body>
