@@ -8,15 +8,17 @@
 	import { Input } from '$lib/components/ui/input';
 	import type { Security } from '$lib/db/schemes/security';
 	import type { Stock } from '$lib/db/schemes/stock';
+	import { goto } from '$app/navigation';
 
 	export let stocks: Array<{ stock: Stock; security: Security }>;
 
 	let data = stocks.map((stock) => {
 		return {
+			id: stock.security.id,
 			name: stock.security.name,
 			quantity: stock.stock.amount,
 			price: stock.security.price,
-			image: stock.security.logo
+			image: `https://www.investcroc.com/logos/${stock.security.bic.toUpperCase()}.webp`
 		};
 	});
 
@@ -35,7 +37,8 @@
 			plugins: {
 				filter: {
 					exclude: true
-				}
+				},
+				sort: {}
 			}
 		}),
 		table.column({
@@ -69,6 +72,13 @@
 
 	const { hasNextPage, hasPreviousPage, pageIndex } = pluginStates.page;
 	const { filterValue } = pluginStates.filter;
+
+	const getRowSecurity = (row: any) => {
+		return stocks.find(
+			({ stock, security }) =>
+				security?.name === row?.cells.find((x: any) => x.id === 'name')?.value
+		);
+	};
 </script>
 
 <div>
@@ -98,7 +108,10 @@
 			<Table.Body {...$tableBodyAttrs}>
 				{#each $pageRows as row (row.id)}
 					<Subscribe rowAttrs={row.attrs()} let:rowAttrs>
-						<Table.Row {...rowAttrs}>
+						<Table.Row
+							on:click={() => goto(`/assets/${getRowSecurity(row)?.security.id}`)}
+							{...rowAttrs}
+						>
 							{#each row.cells as cell (cell.id)}
 								<Subscribe attrs={cell.attrs()} let:attrs>
 									<Table.Cell {...attrs}>

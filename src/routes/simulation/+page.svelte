@@ -70,7 +70,6 @@
 	const updateChart = () => {
 
 		if (toValue?.toDate().getTime() <= fromValue?.toDate().getTime()) {
-			// toast("JSI ZMRD!");
 			return
 		}
 
