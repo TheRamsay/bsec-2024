@@ -68,21 +68,28 @@
 	};
 
 	const updateChart = () => {
-
 		if (toValue?.toDate().getTime() <= fromValue?.toDate().getTime()) {
-			return
+			return;
 		}
 
-		let generatedData = data.securities.map((asset) => {
+		let generatedData = data.stocks.map(({ stock, security }) => {
+			// console.log(security.price);
+			// console.log(security.positive_case);
 			return {
-				name: asset.name,
+				name: security.bic,
 				type: 'line',
 				showSymbol: false,
-				data: generateData(asset.price, asset.positive_case, fromValue?.toDate(), toValue?.toDate())
+				data: generateData(
+					security.price,
+					security.positiveCase,
+					stock.createdAt,
+					// fromValue?.toDate(),
+					toValue?.toDate()
+				)
 			};
 		});
 
-		console.log(generatedData);
+		// console.log(generatedData);
 
 		let options = {
 			title: {
@@ -113,7 +120,7 @@
 				}
 			],
 			legend: {
-				data: data.securities.map((asset) => asset.name).concat('Total')
+				data: data.stocks.map(({stock, security}) => security.bic).concat('Total')
 			}
 		};
 

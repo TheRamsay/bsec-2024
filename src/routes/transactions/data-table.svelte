@@ -41,7 +41,7 @@
 					exclude: true
 				}
 			},
-			cell: (row) => `${row.value} 🍌`
+			cell: (row) => `${row.value} $`
 		})
 	]);
 

@@ -14,7 +14,7 @@
 		/>
 		<div>
 			<h1 class="font-bold text-xl mb-">{data.security.name} ({data.security.bic})</h1>
-			<div class="text-gray-400 font-bold">Quantity: {data.asset?.amount}</div>
+			<div class="text-gray-400 font-bold">Quantity: {data.asset?.amount ?? 0}</div>
 		</div>
 	</div>
 	<div class="mb-6">
