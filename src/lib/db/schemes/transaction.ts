@@ -8,6 +8,7 @@ export const transactions = pgTable('transactions', {
 		.notNull()
 		.references(() => users.id),
 	amount: decimal('amount').notNull(),
+	description: text('description').default('expense'),
 	created_at: timestamp('created_at')
 		.notNull()
 		.default(sql`now()`)

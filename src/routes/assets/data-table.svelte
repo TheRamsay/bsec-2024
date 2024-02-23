@@ -6,31 +6,21 @@
 	import { addPagination, addSortBy, addTableFilter } from 'svelte-headless-table/plugins';
 	import { Button } from '$lib/components/ui/button';
 	import { Input } from '$lib/components/ui/input';
+	import type { Security } from '$lib/db/schemes/security';
+	import type { Stock } from '$lib/db/schemes/stock';
 	import { goto } from '$app/navigation';
 
-	const data = [
-		{
-			id: 11,
-			name: 'AMZN',
-			price: 3456.32,
-			quantity: 2,
-			image: 'https://www.investcroc.com/logos/AMZN.webp'
-		},
-		{
-			id: 12,
-			name: 'AAPL',
-			price: 123.32,
-			quantity: 5,
-			image: 'https://www.investcroc.com/logos/AAPL.webp'
-		},
-		{
-			id: 13,
-			name: 'GOOGL',
-			price: 2345.32,
-			quantity: 1,
-			image: 'https://www.investcroc.com/logos/GOOGL.webp'
-		}
-	];
+	export let stocks: Array<{ stock: Stock; security: Security }>;
+
+	let data = stocks.map((stock) => {
+		return {
+			id: stock.security.id,
+			name: stock.security.name,
+			quantity: stock.stock.amount,
+			price: stock.security.price,
+			image: `https://www.investcroc.com/logos/${stock.security.bic.toUpperCase()}.webp`
+		};
+	});
 
 	const table = createTable(readable(data), {
 		page: addPagination(),
@@ -49,15 +39,20 @@
 			accessor: 'name',
 			header: 'name'
 		}),
+		// table.column({
+		// 	accessor: 'image',
+		// 	header: 'image',
+		// 	plugins: {
+		// 		filter: {
+		// 			exclude: true
+		// 		}
+		// 	}
+		// }),
 		table.column({
-			accessor: 'image',
-			header: 'image',
-			plugins: {
-				filter: {
-					exclude: true
-				}
-			}
+			accessor: 'name',
+			header: 'name'
 		}),
+
 		table.column({
 			accessor: 'price',
 			header: 'price',
@@ -84,13 +79,20 @@
 
 	const { hasNextPage, hasPreviousPage, pageIndex } = pluginStates.page;
 	const { filterValue } = pluginStates.filter;
+
+	const getRowSecurity = (row: any) => {
+		const security = stocks.find(
+			({ stock, security }) =>
+				security?.name === row?.cells.find((x: any) => x.id === 'name')?.value
+		);
+	};
 </script>
 
 <div>
 	<div class="flex items-center py-4">
 		<Input class="max-w-sm" placeholder="Filter name..." type="text" bind:value={$filterValue} />
 	</div>
-	<div class="rounded-md border">
+	<div class="border rounded-md">
 		<Table.Root {...$tableAttrs}>
 			<Table.Header>
 				{#each $headerRows as headerRow}
@@ -114,7 +116,7 @@
 				{#each $pageRows as row (row.id)}
 					<Subscribe rowAttrs={row.attrs()} let:rowAttrs>
 						<Table.Row
-							on:click={() => goto(`/assets/${row.cells.filter((cell) => cell.id === 'id')[0].value}`)}
+							on:click={() => goto(`/assets/${getRowSecurity(row)?.security.id}`)}
 							{...rowAttrs}
 						>
 							{#each row.cells as cell (cell.id)}
@@ -134,7 +136,7 @@
 			</Table.Body>
 		</Table.Root>
 	</div>
-	<div class="flex items-center justify-end space-x-4 py-4">
+	<div class="flex items-center justify-end py-4 space-x-4">
 		<Button
 			variant="outline"
 			size="sm"

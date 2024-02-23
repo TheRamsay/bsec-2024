@@ -5,12 +5,18 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@internationalized/date':
+    specifier: ^3.5.2
+    version: 3.5.2
   bits-ui:
     specifier: ^0.18.1
     version: 0.18.1(svelte@4.2.11)
   clsx:
     specifier: ^2.1.0
     version: 2.1.0
+  cmdk-sv:
+    specifier: ^0.0.13
+    version: 0.0.13(svelte@4.2.11)
   drizzle-orm:
     specifier: ^0.29.4
     version: 0.29.4(pg@8.11.3)(postgres@3.4.3)
@@ -29,6 +35,9 @@ dependencies:
   postgres:
     specifier: ^3.4.3
     version: 3.4.3
+  svelte-radix:
+    specifier: ^1.0.1
+    version: 1.0.1(svelte@4.2.11)
   svelte-sonner:
     specifier: ^0.3.18
     version: 0.3.18(svelte@4.2.11)
@@ -73,6 +82,9 @@ devDependencies:
   drizzle-kit:
     specifier: ^0.20.14
     version: 0.20.14
+  echarts:
+    specifier: ^5.5.0
+    version: 5.5.0
   eslint:
     specifier: ^8.56.0
     version: 8.56.0
@@ -97,6 +109,9 @@ devDependencies:
   svelte-check:
     specifier: ^3.6.0
     version: 3.6.4(postcss@8.4.35)(svelte@4.2.11)
+  svelte-echarts:
+    specifier: ^0.1.1
+    version: 0.1.1(echarts@5.5.0)(svelte@4.2.11)
   svelte-headless-table:
     specifier: ^0.18.2
     version: 0.18.2(svelte@4.2.11)
@@ -732,6 +747,20 @@ packages:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
+  /@melt-ui/svelte@0.61.2(svelte@4.2.11):
+    resolution: {integrity: sha512-BHkD9G31zQBToA4euDRBgTQRvWxT9scufOVCXgDO6HKTvyxFspbWT2bgiSFqAK4BbAGDn9Ao36Q8F9O71KN4OQ==}
+    peerDependencies:
+      svelte: '>=3 <5'
+    dependencies:
+      '@floating-ui/core': 1.6.0
+      '@floating-ui/dom': 1.6.3
+      '@internationalized/date': 3.5.2
+      dequal: 2.0.3
+      focus-trap: 7.5.4
+      nanoid: 4.0.2
+      svelte: 4.2.11
+    dev: false
+
   /@melt-ui/svelte@0.71.2(svelte@4.2.11):
     resolution: {integrity: sha512-GDUErhAphEoEOLpcBjQ84BgzRR6M3344fQE4QYFffwT7aedWak7CvNsECgeig1Y5xvfDmeEaFnGlOQXIBucJYw==}
     peerDependencies:
@@ -1279,6 +1308,16 @@ packages:
       svelte: 4.2.11
     dev: false
 
+  /bits-ui@0.9.9(svelte@4.2.11):
+    resolution: {integrity: sha512-LkdkyTtpXdkjBzPZJVJgpcre4fut6DONoprMfadHFo82HNUhph+02CxDjYEcZcThb5z4YjSxMlCYvQPZm+YtfQ==}
+    peerDependencies:
+      svelte: ^4.0.0
+    dependencies:
+      '@melt-ui/svelte': 0.61.2(svelte@4.2.11)
+      nanoid: 5.0.6
+      svelte: 4.2.11
+    dev: false
+
   /brace-expansion@1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
     dependencies:
@@ -1386,6 +1425,16 @@ packages:
   /clsx@2.1.0:
     resolution: {integrity: sha512-m3iNNWpd9rl3jvvcBnu70ylMdrXt8Vlq4HYadnU5fwcOtvkSQWPmj7amUcDT2qYI7risszBjI5AUIUox9D16pg==}
     engines: {node: '>=6'}
+    dev: false
+
+  /cmdk-sv@0.0.13(svelte@4.2.11):
+    resolution: {integrity: sha512-WrYn0MMdVyzJx+KuOQy028/7mv+uMwO1cxVBM0uJ4KA+50PX792epsj8Yw3It8WfWR8Rae7siBCg54mIAlKsiw==}
+    peerDependencies:
+      svelte: ^4.0.0
+    dependencies:
+      bits-ui: 0.9.9(svelte@4.2.11)
+      nanoid: 5.0.6
+      svelte: 4.2.11
     dev: false
 
   /code-red@1.0.4:
@@ -1626,6 +1675,13 @@ packages:
 
   /eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
+
+  /echarts@5.5.0:
+    resolution: {integrity: sha512-rNYnNCzqDAPCr4m/fqyUFv7fD9qIsd50S6GDFgO1DxZhncCsNsG7IfUlAlvZe5oSEQxtsjnHiUuppzccry93Xw==}
+    dependencies:
+      tslib: 2.3.0
+      zrender: 5.5.0
+    dev: true
 
   /electron-to-chromium@1.4.679:
     resolution: {integrity: sha512-NhQMsz5k0d6m9z3qAxnsOR/ebal4NAGsrNVRwcDo4Kc/zQ7KdsTKZUxZoygHcVRb0QDW3waEDIcE3isZ79RP6g==}
@@ -2571,6 +2627,12 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
+  /nanoid@4.0.2:
+    resolution: {integrity: sha512-7ZtY5KTCNheRGfEFxnedV5zFiORN1+Y1N6zvPTnHQd8ENUvfaDBeuJDZb2bN/oXwXxu3qkTXDzy57W5vAmDTBw==}
+    engines: {node: ^14 || ^16 || >=18}
+    hasBin: true
+    dev: false
+
   /nanoid@5.0.6:
     resolution: {integrity: sha512-rRq0eMHoGZxlvaFOUdK1Ev83Bd1IgzzR+WJ3IbDJ7QOSdAxYjlurSPqFs9s4lJg29RT6nPwizFtJhQS6V5xgiA==}
     engines: {node: ^18 || >=20}
@@ -3258,6 +3320,16 @@ packages:
       - sugarss
     dev: true
 
+  /svelte-echarts@0.1.1(echarts@5.5.0)(svelte@4.2.11):
+    resolution: {integrity: sha512-kLnTPz6gmRl47Oe/Vjh6sIRBYRUUmzl8uvrdMg9wFXe1ur6L/xBo3c7e5lMBQarPRteC24+XT335P/htNyihHA==}
+    peerDependencies:
+      echarts: ^5.4.3
+      svelte: ^4.0.0
+    dependencies:
+      echarts: 5.5.0
+      svelte: 4.2.11
+    dev: true
+
   /svelte-eslint-parser@0.33.1(svelte@4.2.11):
     resolution: {integrity: sha512-vo7xPGTlKBGdLH8T5L64FipvTrqv3OQRx9d2z5X05KKZDlF4rQk8KViZO4flKERY+5BiVdOh7zZ7JGJWo5P0uA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -3349,6 +3421,14 @@ packages:
       svelte: 4.2.11
       typescript: 5.3.3
     dev: true
+
+  /svelte-radix@1.0.1(svelte@4.2.11):
+    resolution: {integrity: sha512-X9RE04aygpS5klJALPdkyqeOSKigVJQDy6nycUOmycqV+7ZOQxKvzrwklMi1o8AhTUTn2QExlBVygJbYZoL58A==}
+    peerDependencies:
+      svelte: ^3.54.0 || ^4.0.0 || ^5.0.0
+    dependencies:
+      svelte: 4.2.11
+    dev: false
 
   /svelte-render@2.0.1(svelte@4.2.11):
     resolution: {integrity: sha512-RpB0SurwXm4xhjvHHtjeqMmvd645FURb79GFOotScOSqnKK5vpqBgoBPGC0pp+E/eZgDSQ9rRAdn/+N4ys1mXQ==}
@@ -3558,6 +3638,10 @@ packages:
 
   /ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
+
+  /tslib@2.3.0:
+    resolution: {integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==}
+    dev: true
 
   /tslib@2.4.0:
     resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
@@ -3807,3 +3891,9 @@ packages:
 
   /zod@3.22.4:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
+
+  /zrender@5.5.0:
+    resolution: {integrity: sha512-O3MilSi/9mwoovx77m6ROZM7sXShR/O/JIanvzTwjN3FORfLSr81PsUGd7jlaYOeds9d8tw82oP44+3YucVo+w==}
+    dependencies:
+      tslib: 2.3.0
+    dev: true

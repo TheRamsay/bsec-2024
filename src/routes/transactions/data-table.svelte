@@ -6,27 +6,21 @@
 	import { addPagination, addSortBy, addTableFilter } from 'svelte-headless-table/plugins';
 	import { Button } from '$lib/components/ui/button';
 	import { Input } from '$lib/components/ui/input';
+	import type { Transaction } from '$lib/db/schemes/transaction';
+	import TopUpDialog from './TopUpDialog.svelte';
+	import type { PageData } from './$types';
 
-	const data = [
-		{
-			description: 'Rent',
-			amount: '-10000'
-		},
-		{
-			description: 'Salary',
-			amount: '20000'
-		},
-		{
-			description: 'Groceries',
-			amount: '-5000'
-		},
-		{
-			description: 'Sugar daddy allowance 💸',
-			amount: '15000'
-		}
-	];
+	export let transactions: Transaction[];
+	export let data: PageData;
 
-	const table = createTable(readable(data), {
+	const transactionData = transactions.map((transaction) => {
+		return {
+			description: transaction.description,
+			amount: transaction.amount
+		};
+	});
+
+	const table = createTable(readable(transactionData), {
 		page: addPagination(),
 		sort: addSortBy(),
 		filter: addTableFilter({
@@ -59,10 +53,11 @@
 </script>
 
 <div>
-	<div class="flex items-center py-4">
+	<div class="flex flex-row justify-between w-full py-4">
 		<Input class="max-w-sm" placeholder="Filter name..." type="text" bind:value={$filterValue} />
+		<TopUpDialog data={data.form} />
 	</div>
-	<div class="rounded-md border">
+	<div class="border rounded-md">
 		<Table.Root {...$tableAttrs}>
 			<Table.Header>
 				{#each $headerRows as headerRow}
@@ -90,7 +85,11 @@
 								<Subscribe attrs={cell.attrs()} let:attrs>
 									<Table.Cell {...attrs}>
 										{#if cell.id === 'amount'}
-											<div class={+cell.value > 0 ? 'text-green-800 font-bold' : 'text-red-600 font-bold'}>
+											<div
+												class={+cell.value > 0
+													? 'text-green-800 font-bold'
+													: 'text-red-600 font-bold'}
+											>
 												<Render of={cell.render()} />
 											</div>
 										{:else}
@@ -105,7 +104,7 @@
 			</Table.Body>
 		</Table.Root>
 	</div>
-	<div class="flex items-center justify-end space-x-4 py-4">
+	<div class="flex items-center justify-end py-4 space-x-4">
 		<Button
 			variant="outline"
 			size="sm"

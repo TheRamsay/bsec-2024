@@ -1,6 +1,6 @@
-import { drizzle_db, schema_db } from "$lib/db/connection.server";
-import { securities, type Security, type InsertSecurity } from "$lib/db/schemes/security";
-import { eq, type InferInsertModel } from "drizzle-orm";
+import { schema_db } from '$lib/db/connection.server';
+import { securities, type Security, type InsertSecurity } from '$lib/db/schemes/security';
+import { eq } from 'drizzle-orm';
 
 export const getSecurities = async (
 ): Promise<Array<Security>> => {

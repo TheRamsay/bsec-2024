@@ -1,30 +1,35 @@
+import { getStocksByUser } from "$lib/api/stocks";
+import { getUserByName } from "$lib/api/users";
+import { decimal } from "drizzle-orm/mysql-core";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async () => {
+    const user = await getUserByName("pepik123");
+    const userStocks = await getStocksByUser(1);
+    let formattedAssets : Array<any> = []
+    let graphValDict : { [name: string]: number } = {}
+    userStocks.forEach(el=>{
+        formattedAssets.push({
+                "name": el.security.name,
+                "price": el.security.price, 
+                "quantity": el.stock.amount,
+                "image": el.security.logo,
+        })
+        if(!(el.security.name in graphValDict))
+            graphValDict[el.security.name] = 0;
+        graphValDict[el.security.name]+= +el.security.price * el.stock.amount;
+    })
+    let graphAssets :Array<{value: number, name: string}> = []
+    for (let key in graphValDict) {
+        let value = graphValDict[key];
+        graphAssets.push({value:graphValDict[key],name:key})
+    }
     return {
         user: {
-            name: "Dominik Huml",
-            balance: 120.32,
+            name: user.username,
+            balance: user.balance
         },
-        assets: [
-            {
-                "name": "AMZN",
-                "price": 3456.32,
-                "quantity": 2,
-                "image": "https://www.investcroc.com/logos/AMZN.webp"
-            },
-            {
-                "name": "AAPL",
-                "price": 123.32,
-                "quantity": 5,
-                "image": "https://www.investcroc.com/logos/AAPL.webp"
-            },
-            {
-                "name": "GOOGL",
-                "price": 2345.32,
-                "quantity": 1,
-                "image": "https://www.investcroc.com/logos/GOOGL.webp"
-            }
-        ]
+        assets: formattedAssets,
+        graphAssets: graphAssets
     };
 }

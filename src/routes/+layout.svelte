@@ -1,17 +1,14 @@
-<script>
+<script lang="ts">
 	import '../app.css';
-	import Navbar from '../components/Navbar.svelte';	
-	import { ModeWatcher } from "mode-watcher";	
+	import Navbar from '../components/Navbar.svelte';
+	import { ModeWatcher } from 'mode-watcher';
+	import type { PageData } from './$types';
 
-	import { Button } from "$lib/components/ui/button";
- 	import Sun from "lucide-svelte/icons/sun";
-  	import Moon from "lucide-svelte/icons/moon";
- 
-  	import { toggleMode } from "mode-watcher";
+	export let data: PageData;
 </script>
 
 <main class="p-2">
-	<Navbar />
+	<Navbar securities={data.securities} />
 	<ModeWatcher />
 	<slot />
 </main>
