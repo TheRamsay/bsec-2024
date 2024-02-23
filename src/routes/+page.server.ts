@@ -6,23 +6,23 @@ import type { PageServerLoad } from "./$types";
 export const load: PageServerLoad = async () => {
     const user = await getUserByName("pepik123");
     const userStocks = await getStocksByUser(1);
-    let formattedAssets : Array<any> = []
-    let graphValDict : { [name: string]: number } = {}
-    userStocks.forEach(el=>{
+    const formattedAssets: Array<any> = []
+    const graphValDict: { [name: string]: number } = {}
+
+    userStocks.forEach(el => {
         formattedAssets.push({
-                "name": el.security.name,
-                "price": el.security.price, 
-                "quantity": el.stock.amount,
-                "image": el.security.logo,
+            "name": el.security.name,
+            "price": el.security.price,
+            "quantity": el.stock.amount,
+            "image": `https://www.investcroc.com/logos/${el.security.bic.toUpperCase()}.webp`,
         })
-        if(!(el.security.name in graphValDict))
+        if (!(el.security.name in graphValDict))
             graphValDict[el.security.name] = 0;
-        graphValDict[el.security.name]+= +el.security.price * el.stock.amount;
+        graphValDict[el.security.name] += +el.security.price * el.stock.amount;
     })
-    let graphAssets :Array<{value: number, name: string}> = []
-    for (let key in graphValDict) {
-        let value = graphValDict[key];
-        graphAssets.push({value:graphValDict[key],name:key})
+    const graphAssets: Array<{ value: number, name: string }> = []
+    for (const key in graphValDict) {
+        graphAssets.push({ value: graphValDict[key], name: key })
     }
     return {
         user: {
