@@ -8,8 +8,8 @@
 </script>
 
 <!-- <Toaster /> -->
-<main class="p-2 h-screen w-screen">
-	<Navbar />
+<main class="w-screen h-screen p-2">
+	<Navbar securities={data.securities} />
 	<ModeWatcher />
 	<slot />
 </main>
