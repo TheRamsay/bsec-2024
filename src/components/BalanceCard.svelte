@@ -2,12 +2,24 @@
 	export let accountName: string;
 	export let balance: string;
 	export let currency: string;
+
+	import * as Card from '$lib/components/ui/card';
 </script>
 
-<div class="flex-rows rounded-xl m-3 text-center p-6 shadow-md w-full h-30">
-	<h2 class="text-xl font-semibold mb-2">{accountName}</h2>
-	<div class="flex-col">
-		<div class="flex justify-center text-2xl font-bold">{balance}</div>
-		<div class="text-sm">{currency}</div>
-	</div>
-</div>
+<Card.Root class="w-[380px]">
+	<Card.Header>
+		<Card.Title>
+			<div class="flex justify-between">
+				<p class="">{accountName}'s balance</p>
+				<p>$</p>
+			</div>
+		</Card.Title>
+		<Card.Description>
+			<div class="text-3xl mt-4">
+				${balance}
+			</div>
+		</Card.Description>
+	</Card.Header>
+	<Card.Content class="grid gap-4"></Card.Content>
+	<Card.Footer></Card.Footer>
+</Card.Root>
