@@ -6,21 +6,25 @@
 	import { addPagination, addSortBy, addTableFilter } from 'svelte-headless-table/plugins';
 	import { Button } from '$lib/components/ui/button';
 	import { Input } from '$lib/components/ui/input';
+	import { goto } from '$app/navigation';
 
 	const data = [
 		{
+			id: 11,
 			name: 'AMZN',
 			price: 3456.32,
 			quantity: 2,
 			image: 'https://www.investcroc.com/logos/AMZN.webp'
 		},
 		{
+			id: 12,
 			name: 'AAPL',
 			price: 123.32,
 			quantity: 5,
 			image: 'https://www.investcroc.com/logos/AAPL.webp'
 		},
 		{
+			id: 13,
 			name: 'GOOGL',
 			price: 2345.32,
 			quantity: 1,
@@ -37,6 +41,10 @@
 	});
 
 	const columns = table.createColumns([
+		table.column({
+			accessor: 'id',
+			header: 'id'
+		}),
 		table.column({
 			accessor: 'name',
 			header: 'name'
@@ -105,7 +113,10 @@
 			<Table.Body {...$tableBodyAttrs}>
 				{#each $pageRows as row (row.id)}
 					<Subscribe rowAttrs={row.attrs()} let:rowAttrs>
-						<Table.Row {...rowAttrs}>
+						<Table.Row
+							on:click={() => goto(`/assets/${row.cells.filter((cell) => cell.id === 'id')[0].value}`)}
+							{...rowAttrs}
+						>
 							{#each row.cells as cell (cell.id)}
 								<Subscribe attrs={cell.attrs()} let:attrs>
 									<Table.Cell {...attrs}>
