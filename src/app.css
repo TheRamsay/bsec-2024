@@ -4,7 +4,7 @@
  
 @layer base {
   :root {
-    --background: 0 0% 80%;
+    --background: 0 0% 93%;
     --foreground: 0 0% 0%;
  
     --muted: 210 40% 96.1%;
@@ -71,8 +71,5 @@
 @layer base {
   * {
     @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
   }
 }
