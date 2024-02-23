@@ -1,4 +1,4 @@
-import { fail, type Actions } from '@sveltejs/kit';
+import { fail, type Actions, redirect } from '@sveltejs/kit';
 import { message, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { buySchema, type BuyFormSchema } from './schema';
@@ -42,9 +42,7 @@ export const actions: Actions = {
 			userId: 1
 		};
 		await buyStock(params);
-		return {
-			form
-		};
+		throw redirect(300, '/assets');
 	},
 	sell: async (event) => {
 		const form = await superValidate(event, zod(buySchema));
@@ -67,12 +65,10 @@ export const actions: Actions = {
 		const params: InsertStock = {
 			amount: parsed,
 			securityId: +(event?.params?.id ?? 0),
-			userId: 1,
+			userId: 1
 		};
 		await sellStock(params);
 
-		return {
-			form
-		};
+		throw redirect(300, '/assets');
 	}
 };
