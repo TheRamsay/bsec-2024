@@ -4,30 +4,10 @@
 	export let currency: string;
 </script>
 
-<div class="card m-3">
+<div class="flex-rows rounded-xl m-3 text-center p-6 shadow-md w-full h-30">
 	<h2 class="text-xl font-semibold mb-2">{accountName}</h2>
-	<div class="balance">{balance}</div>
-	<div class="currency">{currency}</div>
+	<div class="flex-col">
+		<div class="flex justify-center text-2xl font-bold">{balance}</div>
+		<div class="text-sm">{currency}</div>
+	</div>
 </div>
-
-<style>
-	/* Add your styling here */
-	.card {
-		background-color: #fff;
-		border-radius: 8px;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-		padding: 1.5rem;
-		text-align: center;
-	}
-
-	.balance {
-		font-size: 1.5rem;
-		font-weight: bold;
-		color: #1a202c;
-	}
-
-	.currency {
-		font-size: 0.875rem;
-		color: #6b7280;
-	}
-</style>

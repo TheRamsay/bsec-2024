@@ -12,7 +12,7 @@
 </script>
 
 <!-- <Toaster /> -->
-<main class="p-2 h-screen">
+<main class="p-2 h-screen w-screen">
 	<Navbar />
 	<ModeWatcher />
 	<slot />
