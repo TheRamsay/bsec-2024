@@ -1,0 +1,1 @@
+ALTER TABLE "securities" DROP COLUMN IF EXISTS "logo";
