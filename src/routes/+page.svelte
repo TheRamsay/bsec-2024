@@ -9,7 +9,7 @@
 <body>
 	<h1 class="text-3xl font-bold underline text-orange-400">DELAME AKCIE A TOCIME MATY</h1>
 
-	<BalanceCard accountName={data.user.name} balance={data.user.balance} currency="🍌" />
+	<BalanceCard accountName={data.user.name} balance={data.user.balance.toString()} currency="🍌" />
 
     <h2 class="font-bold text-2xl">Your assets</h2>
     <AssetsList assets={data.assets} />
