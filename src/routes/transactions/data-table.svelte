@@ -9,6 +9,7 @@
 	import type { Transaction } from '$lib/db/schemes/transaction';
 	import TopUpDialog from './TopUpDialog.svelte';
 	import type { PageData } from './$types';
+	import { format } from 'date-fns';
 
 	export let transactions: Transaction[];
 	export let data: PageData;
@@ -16,7 +17,8 @@
 	const transactionData = transactions.map((transaction) => {
 		return {
 			description: transaction.description,
-			amount: transaction.amount
+			amount: transaction.amount,
+			date: format(transaction.created_at, 'dd.MM.yyyy HH:mm')
 		};
 	});
 
@@ -42,6 +44,10 @@
 				}
 			},
 			cell: (row) => `${row.value} $`
+		}),
+		table.column({
+			accessor: 'date',
+			header: 'date'
 		})
 	]);
 

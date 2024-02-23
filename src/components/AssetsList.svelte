@@ -14,12 +14,12 @@
 		<Card.Description>
 			<div class="mt-4">
 				{#each assets as asset}
-					<div class="flex justify-between items-center">
-						<div class="flex items-center">
+					<div class="flex items-center justify-between w-full">
+						<div class="flex items-center w-full">
 							<img src={asset.image} alt={asset.name} class="w-8 h-8 mr-4" />
 							<h2 class="text-xl font-semibold">{asset.name}</h2>
 						</div>
-						<div class="text-2xl font-bold">{asset.price}$</div>
+						<div class="mr-8 text-2xl font-bold">{asset.price}$</div>
 						<div class="text-2xl font-bold">{asset.quantity}</div>
 					</div>
 				{/each}
