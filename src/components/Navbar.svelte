@@ -15,16 +15,12 @@
 		</a>
 		<span class="ml-2 text-lg font-bold">Vrrrr 🤑</span>
 		<nav class="ml-auto flex content-center gap-2 sm:gap-2">
-			<Button>
-				<a class="text-md font-medium" href="/assets"> Assets </a>
-			</Button>
-			<Button>
-				<a class="text-md font-medium" href="/transactions"> Transcations </a>
-			</Button>
-			<Button>
-				<a class="text-md font-medium" href="/modeling"> Modeling </a>
-			</Button>			
-			<Button on:click={toggleMode} variant="outline" size="icon">
+			<div class="pt-2 flex gap-4">
+				<a class="text-md font-medium hover:underline" href="/assets"> Assets </a>
+				<a class="text-md font-medium hover:underline" href="/transactions"> Transcations </a>
+				<a class="text-md font-medium hover:underline" href="/modeling"> Modeling </a>		
+			</div>
+				<Button on:click={toggleMode} variant="outline" size="icon">
 				<Sun
 				  class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
 				/>
