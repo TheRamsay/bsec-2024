@@ -49,7 +49,7 @@
 		table.column({
 			accessor: 'price',
 			header: 'price',
-			cell: (row) => `${row.value} 🍌`,
+			cell: (row) => `${row.value} $`,
 			plugins: {
 				filter: {
 					exclude: true

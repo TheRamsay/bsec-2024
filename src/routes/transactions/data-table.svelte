@@ -43,7 +43,7 @@
 					exclude: true
 				}
 			},
-			cell: (row) => `${row.value} 🍌`
+			cell: (row) => `${row.value} $`
 		}),
 		table.column({
 			accessor: 'date',
