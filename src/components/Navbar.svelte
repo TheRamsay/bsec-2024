@@ -18,7 +18,7 @@
 		<nav class="ml-auto flex gap-4 sm:gap-6">
 			<a class="text-md font-medium hover:underline underline-offset-4" href="/assets"> Assets </a>
 			<a class="text-md font-medium hover:underline underline-offset-4" href="/transactions"> Transcations </a>
-			<a class="text-md font-medium hover:underline underline-offset-4" href="/modeling"> Modeling </a>
+			<a class="text-md font-medium hover:underline underline-offset-4" href="/simulation"> Simulation </a>
 		</nav>
 	</header>
 </body>
