@@ -22,6 +22,20 @@
       "when": 1708617088910,
       "tag": "0002_closed_bullseye",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1708645072072,
+      "tag": "0003_concerned_lake",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1708647474061,
+      "tag": "0004_famous_nitro",
+      "breakpoints": true
     }
   ]
 }

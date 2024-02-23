@@ -1,5 +1,5 @@
 import { timestamp, text, pgTable, serial, decimal, uuid } from 'drizzle-orm/pg-core';
-import { sql, type InferSelectModel, relations } from 'drizzle-orm';
+import { sql, type InferSelectModel, relations, type InferInsertModel } from 'drizzle-orm';
 
 export const users = pgTable('users', {
 	id: serial('id').primaryKey(),
@@ -12,3 +12,4 @@ export const users = pgTable('users', {
 });
 
 export type User = InferSelectModel<typeof users>;
+export type InsertUser = InferInsertModel<typeof users>;
