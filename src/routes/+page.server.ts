@@ -12,7 +12,7 @@ export const load: PageServerLoad = async () => {
                 "name": el.security.name,
                 "price": el.security.price, 
                 "quantity": el.stock.amount,
-                "image": `https://www.investcroc.com/logos/${el.security.bic}.webp`
+                "image": el.security.logo,
         })
     })
     return {
