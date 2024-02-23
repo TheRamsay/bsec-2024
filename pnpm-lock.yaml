@@ -47,6 +47,9 @@ dependencies:
   svelte-sonner:
     specifier: ^0.3.18
     version: 0.3.18(svelte@4.2.11)
+  svelte-tradingview-widget:
+    specifier: ^2.3.0
+    version: 2.3.0
   sveltekit-superforms:
     specifier: ^2.5.0
     version: 2.5.0(@sveltejs/kit@2.5.1)(@types/json-schema@7.0.15)(esbuild-runner@2.2.2)(esbuild@0.19.12)(svelte@4.2.11)
@@ -3289,6 +3292,10 @@ packages:
     dependencies:
       svelte: 4.2.11
     dev: true
+
+  /svelte-tradingview-widget@2.3.0:
+    resolution: {integrity: sha512-JKkvAmv/8FHKnrHflWmI0Pz+5SuqtWRIAz5rEvcdI6W0sgYwpqgwNdWXSC2yw/8u5hz880AkG9IwrXOFQIxcjQ==}
+    dev: false
 
   /svelte@4.2.11:
     resolution: {integrity: sha512-YIQk3J4X89wOLhjsqIW8tqY3JHPuBdtdOIkASP2PZeAMcSW9RsIjQzMesCrxOF3gdWYC0mKknlKF7OqmLM+Zqg==}

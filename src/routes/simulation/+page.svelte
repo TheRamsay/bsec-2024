@@ -74,16 +74,17 @@
 		}
 
 		let generatedData = data.stocks.map(({ stock, security }) => {
-			let acase = security.neutralCase;
+			let acase = security.neutralCase
 
 			if (selected.value === 'negative') {
-				acase = security.negativeCase;
+				acase = security.positiveCase;
 			} else if (selected.value === 'neutral') {
 				acase = security.neutralCase;
 			} else if (selected.value === 'positive') {
-				acase = security.positiveCase;
+				acase = security.negativeCase;
+			} else {
+				return;
 			}
-
 
 			// console.log(acase);
 
@@ -91,12 +92,7 @@
 				name: security.bic,
 				type: 'line',
 				showSymbol: false,
-				data: generateData(
-					security.price,
-					acase,
-					fromValue?.toDate(),
-					toValue?.toDate()
-				)
+				data: generateData(security.price, acase, fromValue?.toDate(), toValue?.toDate())
 			};
 		});
 
@@ -119,7 +115,7 @@
 				})
 			},
 			yAxis: {
-				name: 'Income'
+				name: 'Price'
 			},
 			series: [
 				...generatedData,
