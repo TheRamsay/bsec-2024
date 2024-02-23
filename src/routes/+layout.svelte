@@ -8,7 +8,7 @@
 </script>
 
 <!-- <Toaster /> -->
-<main class="p-2 h-screen w-screen">
+<main class="p-2 h-screen">
 	<Navbar />
 	<ModeWatcher />
 	<slot />
