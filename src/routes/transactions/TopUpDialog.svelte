@@ -22,7 +22,7 @@
 	<Dialog.Trigger><Button>Top up account</Button></Dialog.Trigger>
 	<Dialog.Content>
 		<Dialog.Header>
-			<Dialog.Title>Buy this stock</Dialog.Title>
+			<Dialog.Title>Add money</Dialog.Title>
 		</Dialog.Header>
 		<form method="POST" class="items-center justify-center max-w-lg mx-6 form-control">
 			<Form.Field {form} name="amount">
